@@ -16,3 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\WebController::class, 'index']);
 
 Route::get('/about', [\App\Http\Controllers\WebController::class, 'about']);
+
+Route::group(['prefix'=>'/test'], function(){
+    Route::get('route1/{param}', function ($param){
+        return $param;
+    })->name('test.route1');
+
+    Route::get('/test/route2/{param}', function ($param){
+        return $param;
+    })->name('test.route2');
+});
